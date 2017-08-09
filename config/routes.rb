@@ -6,6 +6,11 @@ Rails.application.routes.draw do
 
   resources :users, only: [:show]
   resources :listings
+  resources :photos, only: [:create, :destroy] do
+    collection do
+      get :list
+    end
+  end
 
   get 'manage-listing/:id/basics' => 'listings#basics', as: 'manage_listing_basics'
   get 'manage-listing/:id/description' => 'listings#description', as: 'manage_listing_description'
