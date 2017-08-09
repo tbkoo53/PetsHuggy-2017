@@ -1,0 +1,19 @@
+---
+development:
+  cloud_name: hakvcrvjc
+  api_key: '834414481178935'
+  api_secret: fuLvwUH54teZ5AEPECMu5cwHPTk
+  enhance_image_tag: true
+  static_image_support: false
+production:
+  cloud_name: hakvcrvjc
+  api_key: '834414481178935'
+  api_secret: fuLvwUH54teZ5AEPECMu5cwHPTk
+  enhance_image_tag: true
+  static_image_support: true
+test:
+  cloud_name: hakvcrvjc
+  api_key: '834414481178935'
+  api_secret: fuLvwUH54teZ5AEPECMu5cwHPTk
+  enhance_image_tag: true
+  static_image_support: false
