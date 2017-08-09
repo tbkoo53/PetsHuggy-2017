@@ -11,7 +11,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170809014508) do
+ActiveRecord::Schema.define(version: 20170809065436) do
+
+  create_table "listings", force: :cascade do |t|
+    t.string   "home_type"
+    t.string   "pet_type"
+    t.string   "pet_size"
+    t.integer  "breeding_years"
+    t.string   "address"
+    t.string   "listing_title"
+    t.text     "listing_content"
+    t.integer  "price_pernight"
+    t.boolean  "active"
+    t.integer  "user_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  add_index "listings", ["user_id"], name: "index_listings_on_user_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -26,6 +43,12 @@ ActiveRecord::Schema.define(version: 20170809014508) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
+    t.string   "provider"
+    t.string   "uid"
+    t.string   "image"
+    t.string   "name"
+    t.string   "phone_number"
+    t.string   "description"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
