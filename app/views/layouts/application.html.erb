@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>PetsHuggy</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<%= yield %>
+
+<p class="notice"><%= notice %></p>
+<p class="alert"><%= alert %></p>
+
+<!--flashにメッセージがあるとき-->
+<!--メッセージをfに格納-->
+<!--f0 -> :notice-->
+<!--f1 -> 本文-->
+<!--typeを知りたい。f[0]をストリング型に変換、alertをerrorに、noticeをinfoに置き換える-->
+<!--toastrにはnoticeしかないので変換している-->
+<% unless flash.empty? %>
+    <script type="text/javascript" charset="utf-8">
+      <% flash.each do |f| %>
+        <% type = f[0].to_s.gsub('alert', 'error').gsub('notice', 'info') %>
+        toastr['<%= type %>']('<%= f[1] %>');
+      <% end %>
+    </script>
+<% end %>
+
+</body>
+</html>
