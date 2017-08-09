@@ -38,11 +38,13 @@ gem 'paperclip'
 gem 'dropzonejs-rails'
 gem 'figaro', '~> 1.1.0'
 
+gem 'paperclip-cloudinary'
+
+
 
 group :production do
   gem 'pg'
   gem 'rails_12factor'
-  gem 'paperclip-cloudinary'
 end
 
 group :development, :test do
