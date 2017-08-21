@@ -1,5 +1,6 @@
 # coding: utf-8
 class ReservationsController < ApplicationController
+
   def create
     @reservation = current_user.reservations.create(reservation_params)
 

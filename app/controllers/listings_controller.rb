@@ -1,7 +1,7 @@
 # coding: utf-8
 class ListingsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_listing, only: [:show, :update, :basics, :description, :address, :price, :photos, :calender,
+  before_action :set_listing, only: [:show, :update, :basics, :description, :address, :price, :photos, :calendar,
                                      :bankaccount, :publish]
 
   def index
@@ -55,7 +55,7 @@ class ListingsController < ApplicationController
     @photo = Photo.new
   end
 
-  def calender
+  def calendar
   end
 
   def bankaccount

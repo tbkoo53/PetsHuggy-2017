@@ -17,7 +17,7 @@ Rails.application.routes.draw do
   end
 
   get '/setdate' => 'reservations#setdate'
-  get 'duplicate' => 'reservations#duplicate'
+  get '/duplicate' => 'reservations#duplicate'
 
 
 
