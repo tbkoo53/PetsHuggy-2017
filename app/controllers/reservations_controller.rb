@@ -2,9 +2,37 @@
 class ReservationsController < ApplicationController
 
   def create
-    @reservation = current_user.reservations.create(reservation_params)
+    @listing = Listing.find(params[:listing_id])
 
+    if current_user == @listing.user
+      selectedDates = params[:reservation][:selectedDates].split(",")
+      reservationsByme = @listing.reservations.where(user_id: current_user.id)
+      oldSelectedDates = []
+
+      reservationsByme.each do |reservation|
+        oldSelectedDates.push(reservation.start_date)
+      end
+
+      if oldSelectedDates
+        oldSelectedDates.each do |date|
+          @reservation = current_user.reservations.where(start_date: date, end_date: date)
+          @reservation.destroy_all
+        end
+      end
+
+      createDates = selectedDates
+      if createDates
+        createDates.each do |date|
+          current_user.reservations.create(:listing_id => @listing.id, :start_date => date, :end_date => date)
+        end
+      end
+
+      redirect_to :back, notice: "更新しました。"
+    else
+
+    @reservation = current_user.reservations.create(reservation_params)
     redirect_to @reservation.listing, notice: "予約が完了しました。"
+    end
   end
 
   def setdate
