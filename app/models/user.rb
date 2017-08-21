@@ -17,4 +17,5 @@ class User < ActiveRecord::Base
   end
 
   has_many :listings
+  has_many :reservations
 end

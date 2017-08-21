@@ -42,6 +42,7 @@ gem 'figaro', '~> 1.1.0'
 gem 'paperclip-cloudinary'
 
 gem 'geocoder'
+gem 'jquery-ui-rails'
 
 
 group :production do
