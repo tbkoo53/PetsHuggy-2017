@@ -4,6 +4,7 @@ class PhotosController < ApplicationController
 
     if @photo.save
       render json: {message: "success", photoId: @photo.id}, status: 200
+      # render json: {message: "success", public_id: @photo.id}, status: 200
     else
       render json: { error: @photo.errors.full_messages.join(",") }, status: 400
     end
