@@ -18,6 +18,7 @@ Rails.application.routes.draw do
 
   get '/setdate' => 'reservations#setdate'
   get '/duplicate' => 'reservations#duplicate'
+  get '/reservations' => 'reservations#index'
 
 
 
