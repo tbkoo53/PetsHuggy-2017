@@ -40,6 +40,7 @@ Rails.application.routes.draw do
   get '/connect/confirm' => 'stripe#confirm', as: 'stripe_confirm'
   get '/connect/deauthorize' => 'stripe#deauthorize', as: 'stripe_deauthorize'
 
+  get 'not_checked' => 'listings#not_checked'
 
 
 
