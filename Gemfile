@@ -44,6 +44,7 @@ gem 'paperclip-cloudinary'
 gem 'geocoder'
 gem 'jquery-ui-rails'
 gem 'stripe'
+gem 'rest-client'
 
 group :production do
   gem 'pg'
