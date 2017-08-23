@@ -1,6 +1,16 @@
 # coding: utf-8
 class ReservationsController < ApplicationController
 
+  def new
+    @listing = Listing.find(params[:listing_id])
+    @user = current_user
+
+    @start_date =  params[:reservation][:start_date]
+    @end_date =  params[:reservation][:end_date]
+    @price_pernight =  params[:reservation][:price_pernight]
+    @total_price =  params[:reservation][:total_price]
+  end
+
   def create
     @listing = Listing.find(params[:listing_id])
 
@@ -31,7 +41,7 @@ class ReservationsController < ApplicationController
     else
 
     @reservation = current_user.reservations.create(reservation_params)
-    redirect_to @reservation.listing, notice: "予約が完了しました。"
+      redirect_to @reservation.listing, notice: "予約が完了しました。"
     end
   end
 
@@ -42,16 +52,18 @@ class ReservationsController < ApplicationController
     render json: reservations
   end
 
-  def duplicate
-    start_date = Date.parse(params[:start_date])
-    end_date = Date.parse(params[:end_date])
+   def duplicate
+     start_date = Date.parse(params[:start_date])
+     end_date = Date.parse(params[:end_date])
 
-    result = {
-      duplicate: is_duplicate(start_date, end_date)
-    }
+     result = {
+       duplicate: is_duplicate(start_date, end_date)
+     }
 
-    render json: result
+     render json: result
   end
+
+
 
   private
   def reservation_params
