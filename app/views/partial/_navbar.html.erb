@@ -23,6 +23,11 @@
           <li><%= link_to "ログイン", new_user_session_path %></li>
         <% else %>
           <!--ログインしているとき-->
+            <li>
+              <%= link_to conversations_path do %>
+                <i class="fa fa-envelope"></i> メッセージ
+              <% end %>
+            </li>
             <li><%= link_to "シッターになる", new_listing_path %></li>
             <%= image_tag current_user.image, class: "img-circle profile-0" %>
             <li class="dropdown">
